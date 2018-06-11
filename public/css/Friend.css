@@ -1,0 +1,24 @@
+* {margin: 0; padding: 0; box-sizing: border-box;}
+#wrap {width: 360px; height:600px;}
+a {color : #ffffff; text-decoration: none; font-size:18px; font-weight: bold;}
+
+/* 상단 메뉴 */
+header {background-color: rgb(33,83,103); height: 50px;}
+.select_menu {padding-left: 15px; line-height:50px;}
+.select_sub {padding-left: 15px; line-height:40px;}
+nav {background-color: rgb(90,148,163); height: 40px; }
+/*로그아웃 버튼*/
+.logout { margin-left: 180px; font-size:14px;}
+
+/* 친구 목록 / 친구 추가 목록 */
+#contents {height:510px; overflow:scroll;}
+table{border-collapse : collapse; width:340px;}
+td {padding-top: 12px; padding-bottom: 12px; border-bottom : 0.5px solid gray;}
+td:nth-child(1) {padding-left: 14px; padding-right:10px;}
+td:nth-child(2) {width: 220px; }
+
+/* 대화하기 버튼 */
+a[href = "/chatting"] {width:100px; padding:3px;  background-color: rgb(147,205,220)}
+
+/* 친구추가 버튼 */
+a[href = "#"] {width:100px; padding:3px;  background-color: rgb(147,205,220)}

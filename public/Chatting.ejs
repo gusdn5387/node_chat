@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%=title%></title>
+  <link rel="stylesheet" type = "text/css" href="css/Chat.css">
+</head>
+<body>
+  <div id="wrap">
+    <header>
+      <div class = "select_menu">
+        <a href="/friendlist" style = "color: rgb(184,204,228)">친구</a>
+        <a href="/chatlist" style = "color: #ffffff">대화</a>
+      </div>
+    </header>
+    <nav>
+      <div class="select_sub">
+        <span style = "font-weight: bold; color:#ffffff;">OOO님과의 1:1채팅방</span>
+      </div>
+    </nav>
+    <div id="chatbox">
+      <div class="chat">
+
+      </div>
+      <div class="message">
+        <form action="">
+          <textarea name = "message" style = "float:left; border:0; width:288px; height:78px;"></textarea>
+          <button type = "submit" style = "color: #ffffff; font-size: 16px; font-weight: bold; margin-top: 10px; margin-right: 10px; float:right; width:58px; border:0; height:58px; background-color: rgb(147,205,220)">전송</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

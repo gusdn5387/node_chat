@@ -22,7 +22,7 @@ module.exports = passport => {
     }, (req, id, pw, done) =>{
         User.findOne({'id' : id}, (err, user) =>{
             if(err) return done(null);
-            if(user) return done(null, false, req.flash('signup', '중복된 아이디 입니다.'));
+            if(user) return done(null, false);
 
             let newUser = new User();
             newUser.id = id;
