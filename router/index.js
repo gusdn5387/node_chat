@@ -74,7 +74,7 @@ router.post('/signin',passport.authenticate('local-signin',{
 }));
 
 router.post('/signup',passport.authenticate('local-signup',{
-    successRedirect : '/friendlist',
+    successRedirect : '/',
     failureRedirect : '/signup',
     failureFlash : true
 }));

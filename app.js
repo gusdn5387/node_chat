@@ -48,5 +48,4 @@ app.use('/',router);
 
 app.listen(app.get('port'), () => {
     console.log("Server Start port : " + app.get('port'));
-    console.log("views",app.get('views'));
 })

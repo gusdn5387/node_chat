@@ -31,9 +31,8 @@ module.exports = passport => {
 
             newUser.save( err => {
                 if(err) throw err;
-                console.log(newUser);
+                return done(null, newUser);
             });
-            return done(null, newUser);
         });
     }));
 
@@ -48,8 +47,6 @@ module.exports = passport => {
 
             if(!user || !user.Match(pw))
                 return done(null, false, req.flash('signin', '아이디 또는 비밀번호가 틀렸습니다.'));
-
-            console.log(user);
             return done(null, user);
         });
     }));
