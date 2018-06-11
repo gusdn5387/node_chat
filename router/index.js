@@ -63,7 +63,7 @@ router.get('/test', (req,res) => {
 });
 
 router.get('/logout', (req,res) => {
-    res.logout();
+    req.logout();
     res.redirect('/');
 });
 
