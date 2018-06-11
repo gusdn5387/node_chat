@@ -7,6 +7,8 @@ header {background-color: rgb(33,83,103); height: 50px;}
 .select_menu {padding-left: 15px; line-height:50px;}
 .select_sub {padding-left: 15px; line-height:40px;}
 nav {background-color: rgb(90,148,163); height: 40px; }
+/*로그아웃 버튼*/
+.logout {font-weight: normal;; margin-left: 180px; font-size:14px;}
 
 /* 대화 목록 */
 #contents {height:550px; overflow:scroll;}
