@@ -1,7 +1,7 @@
 * {margin: 0; padding: 0; box-sizing: border-box;}
 #wrap {width: 360px; height:600px;}
 a {color : #ffffff; text-decoration: none; font-size:18px; font-weight: bold;}
-
+li {list-style: none;}
 /* 상단 메뉴 */
 header {background-color: rgb(33,83,103); height: 50px;}
 .select_menu {padding-left: 15px; line-height:50px;}
@@ -12,17 +12,24 @@ nav {background-color: rgb(90,148,163); height: 40px; }
 
 /* 대화 목록 */
 #contents {height:550px; overflow:scroll;}
-table{border-collapse : collapse; width:343px;}
-td {padding-top: 5px; padding-bottom: 5px;}
-td:nth-child(1) {padding-left: 15px;}
-td:nth-child(2) {font-size: 15px; font-weight: bold;}
-td:nth-child(3) > div{margin-right: 5px;padding-left: 3px;height: 30px;border-radius: 3px;line-height: 30px;border:1px solid #eee;overflow:hidden; text-overflow: ellipsis; white-space: nowrap; width:160px; font-size: 14px; float: right;}
-tr:hover {background-color: #F4F3F3;}
+#Clt{border-collapse : collapse; width:343px;}
+#Clt td {padding-top: 5px; padding-bottom: 5px;}
+#Clt td:nth-child(1) {padding-left: 15px;}
+#Clt td:nth-child(2) {font-size: 15px; font-weight: bold;}
+#Clt td:nth-child(3) > div{margin-right: 5px;padding-left: 3px;height: 30px;border-radius: 3px;line-height: 30px;border:1px solid #eee;overflow:hidden; text-overflow: ellipsis; white-space: nowrap; width:160px; font-size: 14px; float: right;}
+#Clt tr:hover {background-color: #F4F3F3;}
 
 /*프로필 사진*/
 img {margin-top: 3px; width:40px; height:40px;}
 
 /* 1:1 채팅방 */
 #chatbox {height: 510px;}
-.chat {overflow:scroll; height: 430px;}
-.message {height:80px; border:0.6px solid black;}
+.chat {overflow:scroll; height: 450px; padding-left: 12px; padding-right: 12px;}
+.message {position: fixed; top: 520px; height:80px; background-color: #ffffff; border:0.5px solid rgb(33,83,103);}
+ul {width:100%; margin-top: 3px;}
+ul li {padding-top:8px; padding-bottom: 8px;}
+.fl {float: left;}
+.fr {clear: both; float: right;}
+.name {font-size: 14px; font-weight: bold;}
+.umessage {font-size: 16px; background-color: #E0E0F8; border-radius: 5px; padding: 3px; max-width: 230px;}
+.mmessage {font-size: 16px; background-color: #CEECF5; border-radius: 5px; padding: 3px; max-width: 230px;}
