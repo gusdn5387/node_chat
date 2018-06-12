@@ -17,9 +17,9 @@ require('./db/passport')(passport);
 
 app.set('port',port);
 app.set('views',path.join(__dirname, 'public'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs'); // view engine 을 ejs 로
 
-mongoose.connect('mongodb://sw7190:sw7190@ds147420.mlab.com:47420/sw7190')
+mongoose.connect('mongodb://sw7190:sw7190@ds147420.mlab.com:47420/sw7190') //mlab mongodb 연결
 
 db = mongoose.connection;
 
@@ -31,7 +31,7 @@ db.once('open', () => {
 });
 
 app.use(morgan('dev'));
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
 
 app.use(session({
@@ -44,7 +44,7 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname,'public')));
-app.use('/',router);
+app.use('/',router); // 라우터 분리
 
 app.listen(app.get('port'), () => {
     console.log("Server Start port : " + app.get('port'));

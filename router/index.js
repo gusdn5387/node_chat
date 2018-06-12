@@ -11,27 +11,27 @@ function loginCh(req,res){
     }
 }
 
-
+//default page 로그인
 router.get('/', (req,res) => {
     res.render('SignIn', {
         title : '로그인',
         message : req.flash('signin')
     });
 });
-
+//로그인
 router.get('/signin', (req,res) => {
     res.render('SignIn', {
         title : '로그인',
         message : req.flash('signin')
     });
 });
-
+//회원가입
 router.get('/signup', (req,res) => {
     res.render('SignUp', {
         title : '회원가입'
     });
 });
-//친구목록, 친구추가, 대화목록 , 1:1채팅 페이지 추가
+//친구목록
 router.get('/friendlist', (req,res) => {
     loginCh(req,res);
     if(req.user){
@@ -46,17 +46,14 @@ router.get('/friendlist', (req,res) => {
 
         });
     }
-
-
 });
-
+//친구 추가 목록
 router.get('/addfriend', (req,res) => {
     loginCh(req,res);
     if(req.user){
     Friend.find({'id' : req.user.id}, (err,friends) => {
         if(err) throw err;
-
-        if(friends){
+        if(friends){ //친구가 1명 이라도 있을 시
             let key = [];
             friends.forEach( friend => {
                 key.push({'id' : friend.fid});
@@ -73,7 +70,7 @@ router.get('/addfriend', (req,res) => {
                 });
             });
         }
-        else{
+        else{ //친구가 1명도 없을 시
             users.find({'id' : {$ne : req.user.id} }, (err, user) => {
                 if(err) throw err;;
                 res.render('AddFriend', {
@@ -86,7 +83,7 @@ router.get('/addfriend', (req,res) => {
     });
 };
 });
-
+//대화목록
 router.get('/chatlist', (req,res) => {
     loginCh(req,res);
     if(req.user){
@@ -95,7 +92,7 @@ router.get('/chatlist', (req,res) => {
     });
 }
 });
-
+//1:1 채팅방
 router.get('/chatting', (req,res) => {
     loginCh(req,res);
     if(req.user){
@@ -104,7 +101,7 @@ router.get('/chatting', (req,res) => {
     });
 }
 });
-
+//친구 추가 버튼
 router.get('/insertFriend',(req,res) => {
   loginCh(req,res);
   if(req.user){
@@ -120,7 +117,7 @@ router.get('/insertFriend',(req,res) => {
    res.redirect('/AddFriend');
 }
 });
-
+//유저 중복 체크
 router.get('/checkId',function(req,res) {
   loginCh(req,res);
   if(req.user){
@@ -132,7 +129,7 @@ router.get('/checkId',function(req,res) {
   });
 }
 });
-
+//로그아웃
 router.get('/logout', (req,res) => {
     loginCh(req,res);
     if(req.user){
@@ -140,13 +137,13 @@ router.get('/logout', (req,res) => {
     res.redirect('/');
 }
 });
-
+//로그인 post
 router.post('/signin',passport.authenticate('local-signin',{
     successRedirect : '/friendlist',
     failureRedirect : '/signin',
     failureFlash : true
 }));
-
+//회원가입 post
 router.post('/signup',passport.authenticate('local-signup',{
     successRedirect : '/',
     failureRedirect : '/signup',
