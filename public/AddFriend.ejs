@@ -8,7 +8,6 @@
   <link rel="stylesheet" type = "text/css" href="css/Friend.css">
 </head>
 <body>
-
   <div id="wrap">
     <header>
       <div class = "select_menu">
@@ -19,8 +18,8 @@
     </header>
     <nav>
       <div class="select_sub">
-        <a href="/friendlist" style = "color:#ffffff">친구 목록</a>
-        <a href="/addfriend" style = "color: rgb(184,204,228)">친구 추가</a>
+        <a href="/friendlist" style = "color: rgb(184,204,228)">친구 목록</a>
+        <a href="/addfriend" style = "color: #ffffff">친구 추가</a>
       </div>
     </nav>
     <div id="contents">
@@ -30,7 +29,8 @@
           %>
         <tr>
           <td><img src="img/profile.png" alt="프로필"></td>
-          <td><%=item.fname%></td>
+          <td><%=item.name%></td>
+          <td><input type="button" value = "친구 추가" onclick="location.href = '/insertFriend?id=<%=item.id%>&name=<%=item.name%>'"></td>
         </tr>
         <%
             });

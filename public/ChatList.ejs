@@ -12,39 +12,45 @@
     <header>
       <div class = "select_menu">
         <a href="/friendlist" style = "color: rgb(184,204,228)">친구</a>
-        <a href="/chatlist" style = "color:#ffffff)">대화</a>
+        <a href="/chatlist" style = "color: #ffffff">대화</a>
         <a href="/logout" class = "logout">로그아웃</a>
       </div>
     </header>
     <div id="contents">
-      <table>
-        <tr>
-          <td>1</td>
-          <td><span style = "font-size:14px;">OOO</span><br><span style = "font-size:12px;">하냥</span></td>
-          <td><a href="/chatting">대화하기</a></td>
+      <table id = "Clt">
+        <tr class = "move">
+          <td><img src="img/profile.png" alt="프로필"></td>
+          <td>OOO</td>
+          <td><div>안녕하세요. 저는 홍길동입니다.</div></td>
         </tr>
-        <tr>
-          <td>2</td>
-          <td><span style = "font-size:14px;">XXX</span><br><span style = "font-size:12px;">안녕하세요.</span></td>
-          <td><a href="/chatting">대화하기</a></td>
+        <tr class = "move">
+          <td><img src="img/profile.png" alt="프로필"></td>
+          <td>XXX</td>
+          <td><div>안녕!</div></td>
         </tr>
-        <tr>
-          <td>3</td>
-          <td><span style = "font-size:14px;">UUU</span><br><span style = "font-size:12px;">뭐하니?</span></td>
-          <td><a href="/chatting">대화하기</a></td>
+        <tr class = "move">
+          <td><img src="img/profile.png" alt="프로필"></td>
+          <td>UUU</td>
+          <td><div>나는 서울에 살아. 너는 어디 살아?</div></td>
         </tr>
-        <tr>
-          <td>4</td>
-          <td><span style = "font-size:14px;">???</span><br><span style = "font-size:12px;">뭐라고?????</span></td>
-          <td><a href="/chatting">대화하기</a></td>
+        <tr class = "move">
+          <td><img src="img/profile.png" alt="프로필"></td>
+          <td>SSS</td>
+          <td><div>반가워!</div></td>
         </tr>
-        <tr>
-          <td>5</td>
-          <td><span style = "font-size:14px;">(알수없음)</span><br><span style = "font-size:12px;">라라라라라라라라라라라라라라</span></td>
-          <td><a href="/chatting">대화하기</a></td>
+        <tr class = "move">
+          <td><img src="img/profile.png" alt="프로필"></td>
+          <td>QQQ</td>
+          <td><div>뭐해?</div></td>
         </tr>
       </table>
     </div>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $('.move').dblclick(function() {
+      location.href = "/chatting";
+    });
+  </script>
 </body>
 </html>

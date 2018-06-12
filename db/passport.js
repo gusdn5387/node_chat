@@ -4,13 +4,11 @@ const User = require('./UserModel');
 
 module.exports = passport => {
     passport.serializeUser( (user, done) => {
-        done(null, user.id);
+        done(null, user);
     });
 
     passport.deserializeUser( (user, done) => {
-
-            done(null, user);
-
+        done(null, user);
     });
 
 
