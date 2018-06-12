@@ -1,43 +1,57 @@
--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title><%=title%></title>
-  <link rel="stylesheet" type = "text/css" href="css/Friend.css">
+  <link rel="stylesheet" type = "text/css" href="css/Chat.css">
   <link rel="shortcut icon" href="img/favicon-16x16.png">
 </head>
 <body>
   <div id="wrap">
     <header>
       <div class = "select_menu">
-        <a href="/friendlist" style = "color:#ffffff">친구</a>
-        <a href="/chatlist" style = "color: rgb(255,255,255,.6)">대화</a>
+        <a href="/friendlist" style = "color: rgb(255,255,255,.6)">친구</a>
+        <a href="/chatlist" style = "color: #ffffff">대화</a>
         <a href="/logout" class = "logout">로그아웃</a>
       </div>
     </header>
-    <nav>
-      <div class="select_sub">
-        <a href="/friendlist" style = "color: rgb(255,255,255,.6)">친구 목록</a>
-        <a href="/addfriend" style = "color: #ffffff">친구 추가</a>
-      </div>
-    </nav>
     <div id="contents">
-      <table>
-          <%
-              list.forEach((item) => {
-          %>
-        <tr>
+      <table id = "Clt">
+        <tr class = "move">
           <td><img src="img/profile.png" alt="프로필"></td>
-          <td><%=item.name%></td>
-          <td><input type="button" value = "친구 추가" onclick="location.href = '/insertFriend?id=<%=item.id%>&name=<%=item.name%>'"></td>
+          <td>OOO</td>
+          <td><div>안녕하세요! 저는 홍길동입니다.</div></td>
         </tr>
-        <%
-            });
-        %>
+        <tr class = "move">
+          <td><img src="img/profile.png" alt="프로필"></td>
+          <td>XXX</td>
+          <td><div>안녕!</div></td>
+        </tr>
+        <tr class = "move">
+          <td><img src="img/profile.png" alt="프로필"></td>
+          <td>UUU</td>
+          <td><div>나는 서울에 살아. 너는 어디 살아?</div></td>
+        </tr>
+        <tr class = "move">
+          <td><img src="img/profile.png" alt="프로필"></td>
+          <td>SSS</td>
+          <td><div>반가워!</div></td>
+        </tr>
+        <tr class = "move">
+          <td><img src="img/profile.png" alt="프로필"></td>
+          <td>QQQ</td>
+          <td><div>뭐해?</div></td>
+        </tr>
       </table>
     </div>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $('.move').dblclick(function() {
+      location.href = "/chatting";
+    });
+  </script>
 </body>
 </html>

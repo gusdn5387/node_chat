@@ -1,4 +1,4 @@
--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -19,25 +19,40 @@
     </header>
     <nav>
       <div class="select_sub">
-        <a href="/friendlist" style = "color: rgb(255,255,255,.6)">친구 목록</a>
-        <a href="/addfriend" style = "color: #ffffff">친구 추가</a>
+        <a href="/friendlist" style = "color:#ffffff">친구 목록</a>
+        <a href="/addfriend" style = "color: rgb(255,255,255,.6)">친구 추가</a>
       </div>
     </nav>
     <div id="contents">
       <table>
-          <%
-              list.forEach((item) => {
-          %>
-        <tr>
+        <tr class = "move">
           <td><img src="img/profile.png" alt="프로필"></td>
-          <td><%=item.name%></td>
-          <td><input type="button" value = "친구 추가" onclick="location.href = '/insertFriend?id=<%=item.id%>&name=<%=item.name%>'"></td>
+          <td>OOO</td>
         </tr>
-        <%
-            });
-        %>
+        <tr class = "move">
+          <td><img src="img/profile.png" alt="프로필"></td>
+          <td>XXX</td>
+        </tr>
+        <tr class = "move">
+          <td><img src="img/profile.png" alt="프로필"></td>
+          <td>UUU</td>
+        </tr>
+        <tr class = "move">
+          <td><img src="img/profile.png" alt="프로필"></td>
+          <td>SSS</td>
+        </tr>
+        <tr class = "move">
+          <td><img src="img/profile.png" alt="프로필"></td>
+          <td>QQQ</td>
+        </tr>
       </table>
     </div>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $('.move').dblclick(function() {
+      location.href = "/chatting";
+    });
+  </script>
 </body>
 </html>
