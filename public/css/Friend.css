@@ -1,10 +1,13 @@
 * {margin: 0; padding: 0; box-sizing: border-box;}
 #wrap {width: 360px; height:600px;}
 a {color : #ffffff; text-decoration: none; font-size:18px; font-weight: bold;}
+
+/*스크롤바*/
 ::-webkit-scrollbar {width: 12px; height: 12px;  }
 ::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment {display: block; width: 12px;height: 12px; background: rgba(0,0,0,.05);} /*스크롤바의 시작과 끝을 알려줌*/
 ::-webkit-scrollbar-track {background: rgba(0,0,0,.05); } /*스크롤바 배경*/
 ::-webkit-scrollbar-thumb { background: rgb(33,83,103,.3);  } /*스크롤*/
+
 /* 상단 메뉴 */
 header {background-color: rgb(33,83,103); height: 50px;}
 .select_menu {padding-left: 15px; line-height:50px;}
@@ -15,7 +18,7 @@ nav {background-color: rgb(90,148,163); height: 40px; }
 
 /* 친구 목록 / 친구 추가 목록 */
 #contents {height:510px; overflow-x: hidden; overflow-y:scroll;}
-table{border-collapse : collapse; width:343px;}
+table{border-collapse : collapse; width:348px;}
 td {padding-top: 5px; padding-bottom: 5px;}
 td:nth-child(1) {padding-left: 15px; width: 70px;}
 td:nth-child(2) {font-size: 15px; font-weight: bold;}

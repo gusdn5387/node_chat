@@ -2,10 +2,13 @@
 #wrap {width: 360px; height:600px;}
 a {color : #ffffff; text-decoration: none; font-size:18px; font-weight: bold;}
 li {list-style: none;}
+
+/*스크롤바*/
 ::-webkit-scrollbar {width: 12px; height: 12px;  }
 ::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment {display: block; width: 12px;height: 12px; background: rgba(0,0,0,.05);} /*스크롤바의 시작과 끝을 알려줌*/
 ::-webkit-scrollbar-track {background: rgba(0,0,0,.05); } /*스크롤바 배경*/
 ::-webkit-scrollbar-thumb { background: rgb(33,83,103,.3);  } /*스크롤*/
+
 /* 상단 메뉴 */
 header {background-color: rgb(33,83,103); height: 50px;}
 .select_menu {padding-left: 15px; line-height:50px;}
@@ -16,7 +19,7 @@ nav {background-color: rgb(90,148,163); height: 40px; }
 
 /* 대화 목록 */
 #contents {height:550px; overflow-x: hidden; overflow-y:scroll;}
-#Clt{border-collapse : collapse; width:343px;}
+#Clt{border-collapse : collapse; width:348px;}
 #Clt td {padding-top: 5px; padding-bottom: 5px;}
 #Clt td:nth-child(1) {padding-left: 15px;}
 #Clt td:nth-child(2) {font-size: 15px; font-weight: bold;}
@@ -28,12 +31,12 @@ img {margin-top: 3px; width:40px; height:40px;}
 
 /* 1:1 채팅방 */
 #chatbox {height: 510px;}
-.chat {overflow-x: hidden; overflow-y:scroll; height: 450px; padding-left: 12px; padding-right: 12px;}
-.message {position: fixed; top: 520px; height:80px; background-color: #ffffff; border:0.5px solid rgba(0,0,1,.3);}
+.chat {overflow-x: hidden; overflow-y:scroll; height: 430px; padding-left: 12px; padding-right: 12px;}
+.message {height:80px; background-color: #ffffff; border:0.5px solid rgba(0,0,1,.3);}
 ul {width:100%; margin-top: 3px;}
-ul li {padding-top:8px; padding-bottom: 8px;}
+ul li {padding-top:10px; padding-bottom: 10px;}
 .fl {float: left;}
 .fr {clear: both; float: right;}
 .name {font-size: 14px; font-weight: bold;}
-.umessage {font-size: 16px; background-color: #E0E0F8; border-radius: 5px; padding: 3px; max-width: 230px;}
-.mmessage {font-size: 16px; background-color: #CEECF5; border-radius: 5px; padding: 3px; max-width: 230px;}
+.umessage {font-size: 16px; background-color: #E0E0F8; border-radius: 5px; padding: 3px; max-width: 200px;}
+.mmessage {font-size: 16px; background-color: #CEECF5; border-radius: 5px; padding: 3px; max-width: 200px;}
