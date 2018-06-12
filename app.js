@@ -52,6 +52,12 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname,'public')));
 app.use('/',router); // 라우터 분리
 
-io.on('connection',(socket) => {
 
+
+io.on('connection',(socket) => {
+    console.log(socket.id);
+    socket.on('send message', (users,msg) => {
+        console.log(users.fuser);
+        io.emit('alert message',msg);
+    });
 });

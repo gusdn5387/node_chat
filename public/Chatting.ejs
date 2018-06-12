@@ -65,7 +65,7 @@
       </div>
       <div class="message">
         <form id="chat">
-          <textarea name = "message" style = "float:left; border:0; width:290px; height:78px;"></textarea>
+          <textarea name = "message" style = "float:left; border:0; width:290px; height:78px;" id="contents"></textarea>
           <button type = "submit" id = "send" style = "color: #ffffff; font-size: 16px; font-weight: bold; margin-top: 10px; margin-right: 10px; float:right; width:58px; border:0; height:58px; background-color: rgb(147,205,220)">전송</button>
         </form>
       </div>
@@ -75,10 +75,17 @@
   <script src="/socket.io/socket.io.js"></script>
   <script>
     let socket = io();
+    let users = {
+        user : "<%=user.id%>",
+        fuser : "<%=fuser%>"
+    };
     $("#chat").on('submit', e => {
-        socket
         e.preventDefault();
-    })
+
+        console.log(1111);
+        socket.emit('send message',users,$("contents").val());
+    });
+
   </script>
 </body>
 </html>

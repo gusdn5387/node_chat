@@ -25,33 +25,21 @@
     </nav>
     <div id="contents">
       <table>
-        <tr class = "move">
+          <%
+              list.forEach((item) => {
+          %>
+        <tr class = "move" data-name = "<%=item.fname%>">
           <td><img src="img/profile.png" alt="프로필"></td>
-          <td>OOO</td>
+          <td><%=item.fname%></td>
         </tr>
-        <tr class = "move">
-          <td><img src="img/profile.png" alt="프로필"></td>
-          <td>XXX</td>
-        </tr>
-        <tr class = "move">
-          <td><img src="img/profile.png" alt="프로필"></td>
-          <td>UUU</td>
-        </tr>
-        <tr class = "move">
-          <td><img src="img/profile.png" alt="프로필"></td>
-          <td>SSS</td>
-        </tr>
-        <tr class = "move">
-          <td><img src="img/profile.png" alt="프로필"></td>
-          <td>QQQ</td>
-        </tr>
+        <% });%>
       </table>
     </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     $('.move').dblclick(function() {
-      location.href = "/chatting";
+      location.href = "/chatting?fname="+$(this).attr('data-name');
     });
   </script>
 </body>
