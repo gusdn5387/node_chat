@@ -18,6 +18,10 @@
       </div>
     </header>
     <div id="contents">
+      <div>
+        <span class = "searchico"><img src="img/searchico.png"></span>
+        <input type = "text" id = "keyword" placeholder="채팅방 이름검색"/>
+      </div>
       <table id = "Clt">
         <tr class = "move">
           <td><img src="img/profile.png" alt="프로필"></td>
@@ -49,6 +53,13 @@
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
+  $('#keyword').keyup(function() {
+    var keyword = $(this).val();
+    $('.move').hide();
+    var temp = $(".move > td:nth-child(2):contains('"+keyword+"')");
+
+    $(temp).parent().show();
+  });
     $('.move').dblclick(function() {
       location.href = "/chatting";
     });
