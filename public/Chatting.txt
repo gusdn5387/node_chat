@@ -1,4 +1,4 @@
--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -60,6 +60,12 @@
             <li class="fl">
               <div class = "name">OOO</div>
               <div class = "umessage">기다리고 있겠습니다.</div>
+            </li>
+            <li class="fr">
+              <div class = "mmessage">지금 막 밥 먹고 돌아왔습니다.</div>
+            </li>
+            <li class="fr">
+              <div class = "mmessage">뭐 하고 계시나요?</div>
             </li>
         </ul>
       </div>
