@@ -51,8 +51,19 @@
 
       $(temp).parent().show();
     });
+    $('.move').click(function() {
+      var tr = $(this);
+      $('.move').removeClass("active");
+      tr.addClass("active");
+    });
     $('.move').dblclick(function() {
       location.href = "/chatting";
+    });
+    $('html').keydown(function(key) {
+      if(key.keyCode == 13) {
+        alert('asd');
+        location.href = "/chatting";
+      }
     });
   </script>
 </body>
