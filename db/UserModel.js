@@ -15,4 +15,4 @@ userSchema.methods.Match = function(pw) {
     return bcrybt.compareSync(pw, this.pw);
 };
 
-module.exports = mongoose.model('users',userSchema);
+module.exports = mongoose.model('user',userSchema,'users');

@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 const users = require('../db/UserModel');
+const Friend = require('../db/FriendModel');
 
 router.get('/', (req,res) => {
     res.render('SignIn', {
@@ -24,15 +25,51 @@ router.get('/signup', (req,res) => {
 });
 //친구목록, 친구추가, 대화목록 , 1:1채팅 페이지 추가
 router.get('/friendlist', (req,res) => {
-    res.render('FriendList', {
-        title : '친구목록'
+  Friend.find({'id' : req.user.id}, (err,user) => {
+       if(err) throw err;
+
+     res.render('FriendList', {
+          title : '친구목록',
+          list : user,
+          user : req.user
+      });
     });
 });
 
 router.get('/addfriend', (req,res) => {
-    res.render('AddFriend', {
-        title : '친구추가'
-    });
+  Friend.find({'id' : req.user.id}, (err,friends) => {
+        if(err) throw err;
+
+        if(friends){
+            let key = [];
+            friends.forEach( friend => {
+                key.push({'id' : friend.fid});
+            });
+
+            key.push({'id' : req.user.id});
+
+            users.find({$nor : key}, (err, user) => {
+                if(err) throw err;
+                res.render('AddFriend', {
+                    title : '친구추가',
+                    list : user,
+                    user : req.user
+                });
+            });
+
+        }
+        else{
+            console.log(2);
+            users.find({'id' : {$ne : req.user.id} }, (err, user) => {
+                if(err) throw err;;
+                res.render('AddFriend', {
+                    title : '친구추가',
+                    list : user,
+                    user : req.user
+                });
+            })
+        }
+  });
 });
 
 router.get('/chatlist', (req,res) => {
@@ -46,6 +83,21 @@ router.get('/chatting', (req,res) => {
         title : '1:1 채팅'
     });
 });
+
+router.get('/insertFriend',(req,res) => {
+  let newFriend = new Friend;
+
+  newFriend.id = req.user.id;
+  newFriend.fid = req.param('id');
+  newFriend.fname = req.param('name');
+
+  newFriend.save(err => {
+      if(err) throw err;
+  });
+   res.redirect('/AddFriend');
+
+});
+
 
 router.get('/checkId',function(req,res) {
   var id = req.param('id');
