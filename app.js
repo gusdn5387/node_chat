@@ -6,6 +6,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const socket = require('socket.io');
 
 const router = require('./router');
 const app = express();
@@ -13,9 +14,14 @@ const port = process.env.PORT || 3000;
 
 let db = null;
 
+let server = app.listen(port, () => {
+    console.log("Server Start");
+});
+
+let io = socket.listen(server);
+
 require('./db/passport')(passport);
 
-app.set('port',port);
 app.set('views',path.join(__dirname, 'public'));
 app.set('view engine', 'ejs'); // view engine 을 ejs 로
 
@@ -46,6 +52,6 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname,'public')));
 app.use('/',router); // 라우터 분리
 
-app.listen(app.get('port'), () => {
-    console.log("Server Start port : " + app.get('port'));
-})
+io.on('connection',(socket) => {
+
+});

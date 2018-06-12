@@ -4,6 +4,8 @@ const router = express.Router();
 const users = require('../db/UserModel');
 const Friend = require('../db/FriendModel');
 
+
+//로그인 상태 인지 체크
 function loginCh(req,res){
     if(!req.user){
         res.redirect('/');
@@ -98,6 +100,7 @@ router.get('/chatting', (req,res) => {
     if(req.user){
     res.render('Chatting', {
         title : '1:1 채팅'
+
     });
 }
 });
