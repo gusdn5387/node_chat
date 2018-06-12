@@ -24,28 +24,34 @@
     </nav>
     <div id="contents">
       <table>
-        <tr>
+        <tr class = "move">
           <td><img src="img/profile.png" alt="프로필"></td>
           <td>OOO</td>
         </tr>
-        <tr>
+        <tr class = "move">
           <td><img src="img/profile.png" alt="프로필"></td>
           <td>XXX</td>
         </tr>
-        <tr>
+        <tr class = "move">
           <td><img src="img/profile.png" alt="프로필"></td>
           <td>UUU</td>
         </tr>
-        <tr>
+        <tr class = "move">
           <td><img src="img/profile.png" alt="프로필"></td>
           <td>SSS</td>
         </tr>
-        <tr>
+        <tr class = "move">
           <td><img src="img/profile.png" alt="프로필"></td>
           <td>QQQ</td>
         </tr>
       </table>
     </div>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $('.move').dblclick(function() {
+      location.href = "/chatting";
+    });
+  </script>
 </body>
 </html>
