@@ -24,6 +24,10 @@
       </div>
     </nav>
     <div id="contents">
+      <div id = "search">
+        <span class = "searchico"><img src="img/searchico.png"></span>
+        <input type = "text" id = "keyword" placeholder="이름검색"/>
+      </div>
       <table>
           <%
               list.forEach((item) => {
@@ -42,6 +46,30 @@
         let fname = $(this).attr('data-name');
         let fid = $(this).attr('data-id');
       location.href = `/chatting?fname=${fname}&fid=${fid}`;
+    });
+
+    $('#keyword').keyup(function() {
+      var keyword = $(this).val();
+      $('.move').hide();
+      var temp = $(".move > td:nth-child(2):contains('"+keyword+"')");
+
+      $(temp).parent().show();
+    });
+
+    $('.move').click(function() {
+      let fname = $(this).attr('data-name');
+      let fid = $(this).attr('data-id');
+      var tr = $(this);
+
+      $('.move').removeClass("active");
+      tr.addClass("active");
+
+      //행을 클릭한 후 엔터키 입력 시 그 클릭한 행(사람)과의 1:1 채팅 페이지가 뜸.
+      $('html').keydown(function(key) {
+        if(key.keyCode == 13) {
+          location.href = `/chatting?fname=${fname}&fid=${fid}`;
+        }
+      });
     });
   </script>
 </body>
