@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title><%=title%></title>
+        <link rel="stylesheet" href="css/Sign.css">
+        <link rel="shortcut icon" href="img/favicon-16x16.png">
+    </head>
+    <body>
+        <div id="wrap">
+            <header>
+                <h3>환영합니다!</h3>
+                <p>메신저를 이용하시려면<br>로그인을 해주시기 바랍니다.</p>
+            </header>
+            <div id="signbox">
+                <div class="selectbox">
+                    <a href="/signup" style="color:rgb(84,141,212)">회원가입</a>
+                    <a href="/signin" style="color:rgb(191,191,191)">로그인</a>
+                </div>
+                <form action="/signup" method="post">
+                    <table>
+                        <tr>
+                            <td><input type="text" name="name" placeholder="NAME" required="required"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="id" name="id" placeholder="ID" required="required"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="password" name="pw" placeholder="PASSWORD" required="required"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span id = "dubchk"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="submit">가입</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+    //AJAX로 아이디 실시간 중복 체크
+    $(function() {
+      $('#id').keyup(function() {
+
+        $.get('/checkId?id='+$('#id').val(),function(result) {
+          if(result.result != null) {
+            $('#dubchk').html("아이디가 이미 존재합니다.");
+          } else {
+            $('#dubchk').html("사용 가능합니다.");
+          }
+        });
+      });
+    });
+    </script>
+    </body>
+</html>

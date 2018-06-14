@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%=title%></title>
+  <link rel="stylesheet" type = "text/css" href="css/Chat.css">
+  <link rel="shortcut icon" href="img/favicon-16x16.png">
+</head>
+<body>
+  <div id="wrap">
+    <header>
+      <div class = "select_menu">
+        <a href="/friendlist" style = "color: rgb(184,204,228)">친구</a>
+        <a href="/chatlist" style = "color: #ffffff">대화</a>
+        <a href="/logout" class = "logout">로그아웃</a>
+      </div>
+    </header>
+    <nav>
+      <div class="select_sub">
+        <span style = "font-weight: bold; color:#ffffff;"><%=fuser.fname%>님과의 1:1채팅방</span>
+        <!-- 대화 상대가 친구가 아닐 경우 뜨는 "친구 추가" 버튼 -->
+        <input type="button" value = "친구 추가">
+      </div>
+    </nav>
+    <div id="chatbox">
+      <div class="chat">
+        <ul>
+            <%
+            list.forEach(data => {
+                if(data.id == user.id){
+            %>
+            <li class="fr">
+              <div class = "mmessage"><%=data.msg%></div>
+            </li>
+            <% }else{ %>
+                <li class="fl">
+                  <div class = "name"><%=fuser.fname%></div>
+                  <div class = "umessage"><%=data.msg%></div>
+                </li>
+            <% }}); %>
+        </ul>
+      </div>
+      <div class="message">
+        <form id="chat">
+          <textarea name = "message" style = "float:left; border:0; width:290px; height:78px;" id="contents"></textarea>
+          <button type = "submit" id = "send" style = "color: #ffffff; font-size: 16px; font-weight: bold; margin-top: 10px; margin-right: 6px; margin-left:3px; float:right; width:58px; border:0; height:58px; background-color: rgb(147,205,220)">전송</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    let socket = io();
+    let users = {
+        user : "<%=user.id%>",
+        name : "<%=user.name%>",
+        fuser : "<%=fuser.fid%>",
+        fname : "<%=fuser.fname%>",
+    };
+    $('.chat').scrollTop($('.chat')[0].scrollHeight);
+    $("#chat").on('submit', e => {
+        e.preventDefault();
+        let msg = $("#contents").val()
+        if(msg.length > 0){
+            $(".chat ul").append(`
+                <li class="fr">
+                  <div class = "mmessage">${msg}</div>
+                </li>
+            `);
+            $('.chat').scrollTop($('.chat')[0].scrollHeight);
+            socket.emit('send message',users,msg);
+            $("#contents").val("");
+        }
+    });
+    socket.on('receive message',(data) => {
+        if(users.user == data.users.fuser){
+            $(".chat ul").append(`
+                <li class="fl">
+                  <div class = "name">${data.users.name}</div>
+                  <div class = "umessage">${data.msg}</div>
+                </li>
+            `);
+        }
+        $('.chat').scrollTop($('.chat')[0].scrollHeight);
+    })
+
+      $('textarea').keydown(function(key) {
+        if(key.keyCode == 13) {
+          $('#chat').submit();
+        }
+      });
+  </script>
+</body>
+</html>

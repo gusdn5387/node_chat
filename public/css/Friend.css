@@ -1,0 +1,46 @@
+* {margin: 0; padding: 0; box-sizing: border-box;}
+#wrap {width: 360px; height:600px;}
+a {color : #ffffff; text-decoration: none; font-size:18px; font-weight: bold;}
+
+/*스크롤바*/
+::-webkit-scrollbar {width: 12px; height: 12px;  }
+::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment {display: block; width: 12px;height: 12px; background: rgba(0,0,0,.05);} /*스크롤바의 시작과 끝을 알려줌*/
+::-webkit-scrollbar-track {background: rgba(0,0,0,.05); } /*스크롤바 배경*/
+::-webkit-scrollbar-thumb { background: rgb(33,83,103,.3);  } /*스크롤*/
+
+/* 상단 메뉴 */
+header {background-color: rgb(33,83,103); height: 50px;}
+.select_menu {padding-left: 15px; line-height:50px;}
+.select_sub {padding-left: 15px; line-height:40px;}
+nav {background-color: rgb(90,148,163); height: 40px; }
+
+/*로그아웃 버튼*/
+.logout {font-weight: normal;; margin-left: 180px; font-size:14px;}
+
+/*검색 폼*/
+.searchico {float:left; width: 7%; padding-left: 12px; padding-top: 8px; padding-bottom: 10px; border-bottom: 0.5px solid #e5e5e5;}
+.searchico > img {width:11px; height: 11px;}
+input:focus {outline: none;}
+#keyword {float:right; padding: 12px; width:93%; border: 0; border-bottom: 0.5px solid #e5e5e5;}
+
+
+/* 친구 목록 / 친구 추가 목록 */
+#contents {height:510px; overflow-x: hidden; overflow-y:scroll;}
+table{border-collapse : collapse; width:348px;}
+td {padding-top: 5px; padding-bottom: 5px;}
+td:nth-child(1) {padding-left: 15px; width: 70px;}
+td:nth-child(2) {font-size: 15px; font-weight: bold;}
+tr:hover {background-color: #F4F3F3;}
+.active {background-color : #eae5e5;}
+.active:hover {background-color : #eae5e5;}
+
+/*프로필 사진*/
+img {margin-top: 3px; width:40px; height:40px;}
+
+/* 대화하기 버튼
+a[href = "/chatting"] {width:100px; padding:3px;  background-color: rgb(147,205,220);} */
+
+/* 친구추가 버튼 */
+input[value = "친구 추가"] {float:right; margin-right:10px; border: 0; background-color: rgb(147,205,220,.7); font-weight: bold; color:#ffffff; width:70px; height:35px;}
+input[value = "친구 추가"]:focus {outline: none;}
+input[value = "친구 추가"]:hover {cursor:pointer; background-color: rgb(147,205,220); color:#ffffff !important;}

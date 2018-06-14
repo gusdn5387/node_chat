@@ -1,0 +1,15 @@
+*{margin: 0; padding: 0; box-sizing: border-box;}
+#wrap {width: 360px; height:600px;}
+a {text-decoration: none; font-size:18px; font-weight: bold;}
+
+/* 로그인 / 회원가입 상단 박스 */
+header {background-color: rgb(33,83,103); height: 280px; padding-top:100px;}
+input {margin-top: 6px; width:265px; border:0; border-bottom: 0.75px solid gray; padding: 10px;}
+input:focus {outline: none;}
+button {margin-top:40px; border-radius: 15px; border:0px; padding: 8px; width: 90px; background-color: rgb(84,141,212); color: #ffffff; font-weight: bold}
+h3 , p {text-align: center; color: #ffffff}
+
+/* 로그인 / 회원가입 폼 */
+#signbox {width:270px; margin: 0 auto; height:320px;}
+span {color: red; font-size: 12px;}
+.selectbox {padding-top: 20px; padding-bottom: 52px;}
