@@ -51,20 +51,30 @@
 
       $(temp).parent().show();
     });
+
     $('.move').click(function() {
       var tr = $(this);
+      var td = tr.children();
+
       $('.move').removeClass("active");
       tr.addClass("active");
+      tr.focus();
+
+      //행 클릭 후 엔터키 입력 시 그 클릭한 행(사람)과의 1:1 채팅 페이지가 뜸.
+      $('html').keydown(function(key) {
+        if(key.keyCode == 13) {
+          location.href = "/chatting?name="+td.text();
+        }
+      });
     });
+
     $('.move').dblclick(function() {
-      location.href = "/chatting";
+      var tr = $(this);
+      var td = tr.children();
+
+      location.href = "/chatting?name="+td.text();
     });
-    $('html').keydown(function(key) {
-      if(key.keyCode == 13) {
-        alert('asd');
-        location.href = "/chatting";
-      }
-    });
+
   </script>
 </body>
 </html>

@@ -31,6 +31,8 @@ input:focus {outline: none;}
 #Clt td:nth-child(2) {font-size: 15px; padding-left: 3px; font-weight: bold;}
 #Clt td:nth-child(3) > div{margin-right: 5px; padding-left: 3px;height: 30px;border-radius: 3px;line-height: 30px;border:1px solid #eee;overflow:hidden; text-overflow: ellipsis; white-space: nowrap; width:190px; font-size: 14px; float: right;}
 #Clt tr:hover {background-color: #F4F3F3;}
+.active {background-color : #eae5e5;}
+.active:hover {background-color : #eae5e5;}
 
 /*프로필 사진*/
 img {margin-top: 3px; width:40px; height:40px;}
