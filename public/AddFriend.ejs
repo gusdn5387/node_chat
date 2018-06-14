@@ -43,5 +43,15 @@
       </table>
     </div>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $('#keyword').keyup(function() {
+      var keyword = $(this).val();
+      $('tr').hide();
+      var temp = $("td:nth-child(2):contains('"+keyword+"')");
+
+      $(temp).parent().show();
+    });
+  </script>
 </body>
 </html>
