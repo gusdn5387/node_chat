@@ -19,7 +19,7 @@
     </header>
     <nav>
       <div class="select_sub">
-        <span style = "font-weight: bold; color:#ffffff;">OOO님과의 1:1채팅방</span>
+        <span style = "font-weight: bold; color:#ffffff;"><%=fuser.fname%>님과의 1:1채팅방</span>
       </div>
     </nav>
     <div id="chatbox">
@@ -27,11 +27,6 @@
         <ul>
             <%
             list.forEach(data => {
-                let name;
-                if(data.name != user.name)
-                    name = data.name;
-                else
-                    name = data.fname;
                 if(data.id == user.id){
             %>
             <li class="fr">
@@ -39,7 +34,7 @@
             </li>
             <% }else{ %>
                 <li class="fl">
-                  <div class = "name"><%=name%></div>
+                  <div class = "name"><%=fuser.fname%></div>
                   <div class = "umessage"><%=data.msg%></div>
                 </li>
             <% }}); %>
