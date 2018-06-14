@@ -113,15 +113,23 @@ router.get('/chatting', (req,res) => {
                 {$and : [{'id' : req.param('fid')},{'fid' : req.user.id}]}
             ]}
             , (err,chatList) => {
-            res.render('Chatting', {
-                title : '1:1 채팅',
-                user : req.user,
-                fuser : {
-                    fid : req.param('fid'),
-                    fname : req.param('fname')
-                },
-                list : chatList
-            });
+            Friend.find({'id' : req.user.id, 'fid' : req.param('fid')}, (err,result) => {
+                let isFriend = false;
+
+                if(result.length > 0) isFriend = true;
+                
+                res.render('Chatting', {
+                    title : '1:1 채팅',
+                    user : req.user,
+                    fuser : {
+                        fid : req.param('fid'),
+                        fname : req.param('fname')
+                    },
+                    list : chatList,
+                    isFriend : isFriend
+                });
+            })
+
 
         });
     }
@@ -138,8 +146,9 @@ router.get('/insertFriend',(req,res) => {
 
   newFriend.save(err => {
       if(err) throw err;
+      res.send(true);
   });
-   res.redirect('/AddFriend');
+
 }
 });
 //유저 중복 체크
