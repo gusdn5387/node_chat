@@ -15,7 +15,7 @@ header {background-color: rgb(33,83,103); height: 50px;}
 nav {background-color: rgb(90,148,163); height: 40px; }
 
 /*로그아웃 버튼*/
-.logout {font-weight: normal;; margin-left: 180px; font-size:14px;}
+.logout {font-weight: normal; margin-left: 187px; font-size:14px;}
 
 /*검색 폼*/
 .searchico {float:left; width: 7%; padding-left: 12px; padding-top: 8px; padding-bottom: 10px; border-bottom: 0.5px solid #e5e5e5;}
