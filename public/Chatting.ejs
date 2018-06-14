@@ -21,7 +21,13 @@
       <div class="select_sub">
         <span style = "font-weight: bold; color:#ffffff;"><%=fuser.fname%>님과의 1:1채팅방</span>
         <!-- 대화 상대가 친구가 아닐 경우 뜨는 "친구 추가" 버튼 -->
-        <input type="button" value = "친구 추가">
+        <%
+            if(!isFriend){
+        %>
+        <input type="button" value = "친구 추가" class = "add" data-id = "<%=fuser.fid%>" data-name = "<%=fuser.fname%>">
+        <%
+            }
+        %>
       </div>
     </nav>
     <div id="chatbox">
@@ -60,7 +66,26 @@
         fuser : "<%=fuser.fid%>",
         fname : "<%=fuser.fname%>",
     };
+
+    //친구 추가
+    $(".add").on("click", function() {
+        let id = $(this).attr('data-id');
+        let name = $(this).attr('data-name');
+        let url = `/insertFriend?id=${id}&name=${name}`;
+
+        $.get(url,function(result) {
+            if(!result){
+                alert("친구추가 실패");
+            }
+        });
+        $(this).remove();
+
+    })
+
+    //채팅 스크롤 옮김
     $('.chat').scrollTop($('.chat')[0].scrollHeight);
+
+    //메시지를 보내면
     $("#chat").on('submit', e => {
         e.preventDefault();
         let msg = $("#contents").val()
@@ -75,6 +100,7 @@
             $("#contents").val("");
         }
     });
+    //메시지를 받으면
     socket.on('receive message',(data) => {
         if(users.user == data.users.fuser){
             $(".chat ul").append(`

@@ -35,7 +35,7 @@
         <tr>
           <td><img src="img/profile.png" alt="프로필"></td>
           <td><%=item.name%></td>
-          <td><input type="button" value = "친구 추가" onclick="location.href = '/insertFriend?id=<%=item.id%>&name=<%=item.name%>'"></td>
+          <td><input type="button" value = "친구 추가" class = "add" data-id = "<%=item.id%>" data-name = "<%=item.name%>"></td>
         </tr>
         <%
             });
@@ -45,6 +45,7 @@
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
+<<<<<<< HEAD
     $('#keyword').keyup(function() {
       var keyword = $(this).val();
       $('tr').hide();
@@ -52,6 +53,21 @@
 
       $(temp).parent().show();
     });
+=======
+    $(".add").on("click", function() {
+        let id = $(this).attr('data-id');
+        let name = $(this).attr('data-name');
+        let url = `/insertFriend?id=${id}&name=${name}`;
+
+        $.get(url,function(result) {
+            if(!result){
+                alert("친구추가 실패");
+            }
+        });
+        $(this).parents("tr").remove();
+
+    })
+>>>>>>> sw
   </script>
 </body>
 </html>

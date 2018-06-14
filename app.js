@@ -56,12 +56,12 @@ const Chat = require('./db/ChatModel');
 const ChatLog = require('./db/ChatLogModel');
 
 io.on('connection',(socket) => {
-    socket.on('send message', (users,msg) => {
+    socket.on('send message', (users,msg) => { //메시지가 오면은 
         let data = {
             users : users,
             msg : msg
         };
-        Chat.find({
+        Chat.find({   //마지막 채팅 기록이 하나도 없을 시 추가
                 $or: [
                     {$and : [{'id' : data.users.user},{'fid' : data.users.fuser}]},
                     {$and : [{'id' : data.users.fuser},{'fid' : data.users.user}]}
@@ -78,7 +78,7 @@ io.on('connection',(socket) => {
                 newChat.save(err => {
                     if(err) throw err;
                 });
-            }else{
+            }else{ //마지막 채팅 기록이 하나라도 있을 시 마지막 기록 업데이트
                 Chat.update(
                     {
                         $or: [
@@ -95,7 +95,7 @@ io.on('connection',(socket) => {
                     if(err) throw err;
                 });
             }
-
+            //채팅 기록 저장
             let newChatLog = new ChatLog;
             newChatLog.id = data.users.user;
             newChatLog.name = data.users.name;
@@ -109,7 +109,7 @@ io.on('connection',(socket) => {
         })
 
             io.emit('alert message',data);
-            io.emit('receive message',data);
+            io.emit('receive message',data); // 메시지 전달
     });
 
 });
