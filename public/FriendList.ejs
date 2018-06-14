@@ -28,7 +28,7 @@
           <%
               list.forEach((item) => {
           %>
-        <tr class = "move" data-name = "<%=item.fname%>">
+        <tr class = "move" data-name = "<%=item.fname%>" data-id = "<%=item.fid%>">
           <td><img src="img/profile.png" alt="프로필"></td>
           <td><%=item.fname%></td>
         </tr>
@@ -39,7 +39,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     $('.move').dblclick(function() {
-      location.href = "/chatting?fname="+$(this).attr('data-name');
+        let fname = $(this).attr('data-name');
+        let fid = $(this).attr('data-id');
+      location.href = `/chatting?fname=${fname}&fid=${fid}`;
     });
   </script>
 </body>

@@ -9,6 +9,7 @@
   <link rel="shortcut icon" href="img/favicon-16x16.png">
 </head>
 <body>
+
   <div id="wrap">
     <header>
       <div class = "select_menu">
@@ -19,11 +20,28 @@
     </header>
     <div id="contents">
       <table id = "Clt">
-        <tr class = "move">
+          <%
+          list.forEach(data => {
+              let name;
+              let id;
+              if(data.name != user.name)
+                  name = data.name;
+              else
+                  name = data.fname;
+
+              if(data.id != user.id)
+                  id = data.id;
+              else
+                  id = data.fid;
+          %>
+        <tr class = "move" data-id = "<%=id%>" data-name = "<%=name%>">
           <td><img src="img/profile.png" alt="프로필"></td>
-          <td>OOO</td>
-          <td><div>안녕하세요! 저는 홍길동입니다.</div></td>
+          <td><%=name%></td>
+          <td><div><%=data.msg%></div></td>
         </tr>
+        <%
+        });
+        %>
       </table>
     </div>
   </div>
@@ -33,12 +51,15 @@
     let socket = io();
     let user = "<%=user.id%>";
     $('.move').dblclick(function() {
-      location.href = "/chatting";
+        let fname = $(this).attr("data-name");
+        let fid = $(this).attr("data-id");
+      location.href = `/chatting?fname=${fname}&fid=${fid}`;
     });
-    socket.join(user);
-    socket.on('alert message',(msg) => {
-        console.log(msg);
-    })
+    socket.on('alert message',(data) => {
+        if(user == data.users.fuser){
+
+        }
+    });
 
   </script>
 </body>

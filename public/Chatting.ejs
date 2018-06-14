@@ -25,42 +25,19 @@
     <div id="chatbox">
       <div class="chat">
         <ul>
-            <li class="fl">
-              <div class = "name">OOO</div>
-              <div class = "umessage">안녕하세요. 저는 OOO입니다.</div>
-            </li>
+            <%
+            list.forEach(data => {
+                if(data.id == user.id){
+            %>
             <li class="fr">
-              <div class = "mmessage">네 안녕하세요. 저는 홍길동입니다.</div>
+              <div class = "mmessage"><%=data.msg%></div>
             </li>
-            <li class="fl">
-              <div class = "name">OOO</div>
-              <div class = "umessage">어디서 사시나요?</div>
-            </li>
-            <li class="fr">
-              <div class = "mmessage">아, 저는 서울에서 삽니다.</div>
-            </li>
-            <li class="fl">
-              <div class = "name">OOO</div>
-              <div class = "umessage">그렇군요. 저는 인천에 살아요.</div>
-            </li>
-            <li class="fr">
-              <div class = "mmessage">인천 좋죠.</div>
-            </li>
-            <li class="fl">
-              <div class = "name">OOO</div>
-              <div class = "umessage">맞아요. 좋아요.</div>
-            </li>
-            <li class="fr">
-              <div class = "mmessage">제가 지금 밥을 먹어야 해서 밥 좀 먹고 오겠습니다.</div>
-            </li>
-            <li class="fl">
-              <div class = "name">OOO</div>
-              <div class = "umessage">네. 다녀오시고 연락주세요.</div>
-            </li>
-            <li class="fl">
-              <div class = "name">OOO</div>
-              <div class = "umessage">기다리고 있겠습니다.</div>
-            </li>
+            <% }else{ %>
+                <li class="fl">
+                  <div class = "name"><%=data.fname%></div>
+                  <div class = "umessage"><%=data.msg%></div>
+                </li>
+            <% }}); %>
         </ul>
       </div>
       <div class="message">
@@ -77,14 +54,36 @@
     let socket = io();
     let users = {
         user : "<%=user.id%>",
-        fuser : "<%=fuser%>"
+        name : "<%=user.name%>",
+        fuser : "<%=fuser.fid%>",
+        fname : "<%=fuser.fname%>",
     };
+    $('.chat').scrollTop($('.chat')[0].scrollHeight);
     $("#chat").on('submit', e => {
         e.preventDefault();
-
-        console.log(1111);
-        socket.emit('send message',users,$("contents").val());
+        let msg = $("#contents").val()
+        if(msg.length > 0){
+            $(".chat ul").append(`
+                <li class="fr">
+                  <div class = "mmessage">${msg}</div>
+                </li>
+            `);
+            $('.chat').scrollTop($('.chat')[0].scrollHeight);
+            socket.emit('send message',users,msg);
+            $("#contents").val("");
+        }
     });
+    socket.on('receive message',(data) => {
+        if(users.user == data.users.fuser){
+            $(".chat ul").append(`
+                <li class="fl">
+                  <div class = "name">${data.users.name}</div>
+                  <div class = "umessage">${data.msg}</div>
+                </li>
+            `);
+        }
+        $('.chat').scrollTop($('.chat')[0].scrollHeight);
+    })
 
   </script>
 </body>
