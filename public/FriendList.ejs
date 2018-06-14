@@ -60,7 +60,7 @@
       tr.addClass("active");
       tr.focus();
 
-      //행을 클릭한 후 엔터키 입력 시 그 클릭한 행(사람)과의 1:1 채팅 페이지가 뜸.
+      //행 클릭 후 엔터키 입력 시 그 클릭한 행(사람)과의 1:1 채팅 페이지가 뜸.
       $('html').keydown(function(key) {
         if(key.keyCode == 13) {
           location.href = "/chatting?name="+td.text();
