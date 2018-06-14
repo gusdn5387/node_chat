@@ -27,6 +27,11 @@
         <ul>
             <%
             list.forEach(data => {
+                let name;
+                if(data.name != user.name)
+                    name = data.name;
+                else
+                    name = data.fname;
                 if(data.id == user.id){
             %>
             <li class="fr">
@@ -34,7 +39,7 @@
             </li>
             <% }else{ %>
                 <li class="fl">
-                  <div class = "name"><%=data.fname%></div>
+                  <div class = "name"><%=name%></div>
                   <div class = "umessage"><%=data.msg%></div>
                 </li>
             <% }}); %>
