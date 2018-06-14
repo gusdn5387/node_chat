@@ -3,7 +3,8 @@ const passport = require('passport');
 const router = express.Router();
 const users = require('../db/UserModel');
 const Friend = require('../db/FriendModel');
-
+const Chat = require('../db/ChatModel');
+const ChatLog = require('../db/ChatLogModel');
 
 //로그인 상태 인지 체크
 function loginCh(req,res){
@@ -37,6 +38,7 @@ router.get('/signup', (req,res) => {
 router.get('/friendlist', (req,res) => {
     loginCh(req,res);
     if(req.user){
+        router.user = req.user;
         Friend.find({'id' : req.user.id}, (err,user) => {
             if(err) throw err;
 
@@ -89,20 +91,40 @@ router.get('/addfriend', (req,res) => {
 router.get('/chatlist', (req,res) => {
     loginCh(req,res);
     if(req.user){
-    res.render('ChatList', {
-        title : '대화목록'
-    });
-}
+        Chat.find({$or: [{'id' : req.user.id},{'fid' : req.user.id}]}, (err,chatList) => {
+            if(err) throw err;
+
+            res.render('ChatList', {
+                title : '대화목록',
+                user : req.user,
+                list : chatList
+            });
+
+        });
+    }
 });
 //1:1 채팅방
 router.get('/chatting', (req,res) => {
     loginCh(req,res);
     if(req.user){
-    res.render('Chatting', {
-        title : '1:1 채팅'
+        ChatLog.find(
+            {$or: [
+                {$and : [{'id' : req.user.id},{'fid' : req.param('fid')}]},
+                {$and : [{'id' : req.param('fid')},{'fid' : req.user.id}]}
+            ]}
+            , (err,chatList) => {
+            res.render('Chatting', {
+                title : '1:1 채팅',
+                user : req.user,
+                fuser : {
+                    fid : req.param('fid'),
+                    fname : req.param('fname')
+                },
+                list : chatList
+            });
 
-    });
-}
+        });
+    }
 });
 //친구 추가 버튼
 router.get('/insertFriend',(req,res) => {
