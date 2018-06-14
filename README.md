@@ -1,4 +1,4 @@
-# Node.js Socket.io chatting
+# Node.js Socket.io Messenger 
 
 design & client : h0225w
 
