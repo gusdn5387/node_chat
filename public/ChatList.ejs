@@ -9,7 +9,6 @@
   <link rel="shortcut icon" href="img/favicon-16x16.png">
 </head>
 <body>
-
   <div id="wrap">
     <header>
       <div class = "select_menu">
@@ -21,7 +20,7 @@
     <div id="contents">
       <div>
         <span class = "searchico"><img src="img/searchico.png"></span>
-        <input type = "text" id = "keyword" placeholder="채팅방 이름검색"/>
+        <input type = "text" id = "keyword" placeholder="이름검색"/>
       </div>
       <table id = "Clt">
           <%
@@ -40,33 +39,8 @@
           %>
         <tr class = "move" data-id = "<%=id%>" data-name = "<%=name%>">
           <td><img src="img/profile.png" alt="프로필"></td>
-<<<<<<< HEAD
           <td><%=name%></td>
           <td><div><%=data.msg%></div></td>
-=======
-          <td>OOO</td>
-          <td><div>안녕하세요! 저는 홍길동입니다.</div></td>
-        </tr>
-        <tr class = "move">
-          <td><img src="img/profile.png" alt="프로필"></td>
-          <td>XXX</td>
-          <td><div>안녕!</div></td>
-        </tr>
-        <tr class = "move">
-          <td><img src="img/profile.png" alt="프로필"></td>
-          <td>UUU</td>
-          <td><div>나는 서울에 살아. 너는 어디 살아?</div></td>
-        </tr>
-        <tr class = "move">
-          <td><img src="img/profile.png" alt="프로필"></td>
-          <td>SSS</td>
-          <td><div>반가워!</div></td>
-        </tr>
-        <tr class = "move">
-          <td><img src="img/profile.png" alt="프로필"></td>
-          <td>QQQ</td>
-          <td><div>뭐해?</div></td>
->>>>>>> hw
         </tr>
         <%
         });
@@ -77,7 +51,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script>
-<<<<<<< HEAD
     let socket = io();
     let user = "<%=user.id%>";
     $('.move').dblclick(function() {
@@ -89,37 +62,30 @@
         if(user == data.users.fuser){
 
         }
-=======
-  $('#keyword').keyup(function() {
-    var keyword = $(this).val();
-    $('.move').hide();
-    var temp = $(".move > td:nth-child(2):contains('"+keyword+"')");
+    });
 
-    $(temp).parent().show();
-  });
+    $('#keyword').keyup(function() {
+      var keyword = $(this).val();
+      $('.move').hide();
+      var temp = $(".move > td:nth-child(2):contains('"+keyword+"')");
 
-  $('.move').click(function() {
-    var tr = $(this);
-    var td = tr.children();
+      $(temp).parent().show();
+    });
 
-    $('.move').removeClass("active");
-    tr.addClass("active");
-    tr.focus();
+    $('.move').click(function() {
+      let fname = $(this).attr("data-name");
+      let fid = $(this).attr("data-id");
+      var tr = $(this);
 
-    //행 클릭 후 엔터키 입력 시 그 클릭한 행(사람)과의 1:1 채팅 페이지가 뜸.
+      $('.move').removeClass("active");
+      tr.addClass("active");
+
+    //행을 클릭한 후 엔터키 입력 시 그 클릭한 행(사람)과의 1:1 채팅 페이지가 뜸.
     $('html').keydown(function(key) {
       if(key.keyCode == 13) {
-        location.href = "/chatting?name="+td.eq(1).text();
-      }
-    });
-  });
-
-    $('.move').dblclick(function() {
-      var tr = $(this);
-      var td = tr.children();
-
-      location.href = "/chatting?name="+td.eq(1).text();
->>>>>>> hw
+        location.href = `/chatting?fname=${fname}&fid=${fid}`;
+        }
+      });
     });
 
   </script>

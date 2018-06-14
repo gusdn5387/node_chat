@@ -41,4 +41,6 @@ img {margin-top: 3px; width:40px; height:40px;}
 a[href = "/chatting"] {width:100px; padding:3px;  background-color: rgb(147,205,220);} */
 
 /* 친구추가 버튼 */
-input[value = "친구 추가"] {float:right; margin-right:10px; border: 0; background-color: rgb(147,205,220); font-weight: bold; color:#ffffff; width:70px; height:35px;}
+input[value = "친구 추가"] {float:right; margin-right:10px; border: 0; background-color: rgb(147,205,220,.7); font-weight: bold; color:#ffffff; width:70px; height:35px;}
+input[value = "친구 추가"]:focus {outline: none;}
+input[value = "친구 추가"]:hover {cursor:pointer; background-color: rgb(147,205,220); color:#ffffff !important;}

@@ -3,11 +3,8 @@ const passport = require('passport');
 const router = express.Router();
 const users = require('../db/UserModel');
 const Friend = require('../db/FriendModel');
-<<<<<<< HEAD
 const Chat = require('../db/ChatModel');
 const ChatLog = require('../db/ChatLogModel');
-=======
->>>>>>> hw
 
 //로그인 상태 인지 체크
 function loginCh(req,res){
@@ -39,7 +36,6 @@ router.get('/signup', (req,res) => {
 });
 //친구목록
 router.get('/friendlist', (req,res) => {
-<<<<<<< HEAD
     loginCh(req,res);
     if(req.user){
         router.user = req.user;
@@ -54,53 +50,6 @@ router.get('/friendlist', (req,res) => {
 
         });
     }
-=======
-  Friend.find({'id' : req.user.id}, (err,user) => {
-       if(err) throw err;
-
-     res.render('FriendList', {
-          title : '친구목록',
-          list : user,
-          user : req.user
-      });
-    });
-});
-
-router.get('/addfriend', (req,res) => {
-  Friend.find({'id' : req.user.id}, (err,friends) => {
-        if(err) throw err;
-
-        if(friends){
-            let key = [];
-            friends.forEach( friend => {
-                key.push({'id' : friend.fid});
-            });
-
-            key.push({'id' : req.user.id});
-
-            users.find({$nor : key}, (err, user) => {
-                if(err) throw err;
-                res.render('AddFriend', {
-                    title : '친구추가',
-                    list : user,
-                    user : req.user
-                });
-            });
-
-        }
-        else{
-            console.log(2);
-            users.find({'id' : {$ne : req.user.id} }, (err, user) => {
-                if(err) throw err;;
-                res.render('AddFriend', {
-                    title : '친구추가',
-                    list : user,
-                    user : req.user
-                });
-            })
-        }
-  });
->>>>>>> hw
 });
 //친구 추가 목록
 router.get('/addfriend', (req,res) => {
@@ -187,30 +136,13 @@ router.get('/insertFriend',(req,res) => {
   newFriend.fid = req.param('id');
   newFriend.fname = req.param('name');
 
-<<<<<<< HEAD
-=======
-router.get('/insertFriend',(req,res) => {
-  let newFriend = new Friend;
-
-  newFriend.id = req.user.id;
-  newFriend.fid = req.param('id');
-  newFriend.fname = req.param('name');
-
->>>>>>> hw
   newFriend.save(err => {
       if(err) throw err;
   });
    res.redirect('/AddFriend');
-<<<<<<< HEAD
 }
 });
 //유저 중복 체크
-=======
-
-});
-
-
->>>>>>> hw
 router.get('/checkId',function(req,res) {
   loginCh(req,res);
   if(req.user){

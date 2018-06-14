@@ -15,8 +15,4 @@ userSchema.methods.Match = function(pw) { //hash 코드와 password 비교
     return bcrybt.compareSync(pw, this.pw);
 };
 
-<<<<<<< HEAD
 module.exports = mongoose.model('user',userSchema, 'users');
-=======
-module.exports = mongoose.model('user',userSchema,'users');
->>>>>>> hw

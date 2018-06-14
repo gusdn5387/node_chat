@@ -29,7 +29,6 @@
         <input type = "text" id = "keyword" placeholder="이름검색"/>
       </div>
       <table>
-<<<<<<< HEAD
           <%
               list.forEach((item) => {
           %>
@@ -38,23 +37,17 @@
           <td><%=item.fname%></td>
         </tr>
         <% });%>
-=======
-        <%
-          list.forEach((item) => {
-        %>
-          <tr class = "move">
-          <td><img src="img/profile.png" alt="프로필"></td>
-          <td><%=item.fname%></td>
-        </tr>
-        <%
-          });
-        %>
->>>>>>> hw
       </table>
     </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
+    $('.move').dblclick(function() {
+        let fname = $(this).attr('data-name');
+        let fid = $(this).attr('data-id');
+      location.href = `/chatting?fname=${fname}&fid=${fid}`;
+    });
+
     $('#keyword').keyup(function() {
       var keyword = $(this).val();
       $('.move').hide();
@@ -64,34 +57,20 @@
     });
 
     $('.move').click(function() {
+      let fname = $(this).attr('data-name');
+      let fid = $(this).attr('data-id');
       var tr = $(this);
-      var td = tr.children();
 
       $('.move').removeClass("active");
       tr.addClass("active");
-      tr.focus();
 
-      //행 클릭 후 엔터키 입력 시 그 클릭한 행(사람)과의 1:1 채팅 페이지가 뜸.
+      //행을 클릭한 후 엔터키 입력 시 그 클릭한 행(사람)과의 1:1 채팅 페이지가 뜸.
       $('html').keydown(function(key) {
         if(key.keyCode == 13) {
-          location.href = "/chatting?name="+td.text();
+          location.href = `/chatting?fname=${fname}&fid=${fid}`;
         }
       });
     });
-
-    $('.move').dblclick(function() {
-<<<<<<< HEAD
-        let fname = $(this).attr('data-name');
-        let fid = $(this).attr('data-id');
-      location.href = `/chatting?fname=${fname}&fid=${fid}`;
-=======
-      var tr = $(this);
-      var td = tr.children();
-
-      location.href = "/chatting?name="+td.text();
->>>>>>> hw
-    });
-
   </script>
 </body>
 </html>
