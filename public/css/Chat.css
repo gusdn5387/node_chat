@@ -1,4 +1,4 @@
-* {margin: 0; padding: 0; box-sizing: border-box;}
+﻿* {margin: 0; padding: 0; box-sizing: border-box;}
 #wrap {width: 360px; height:600px;}
 a {color : #ffffff; text-decoration: none; font-size:18px; font-weight: bold;}
 li {list-style: none;}
@@ -40,6 +40,12 @@ img {margin-top: 3px; width:40px; height:40px;}
 
 /* 1:1 채팅방 */
 #chatbox {height: 510px;}
+/*테마 색*/
+select {border: 0; width:85px; height:25px;}
+.blue {background-color: #CEECF5 !important;}
+.red {background-color: #DF3A01 !important; color:#ffffff !important;}
+.green {background-color: #04B404 !important; color:#ffffff !important;}
+.purple {background-color: #9F81F7 !important; color:#ffffff !important;}
 /*대화 상대가 친구가 아닐 경우 뜨는 "친구 추가" 버튼*/
 input[value = "친구 추가"] {float:right; margin-top:7px; margin-right:12px; border: 0; background-color: rgb(147,205,220,.7);  color:rgb(255,255,255,.8); width:70px; height:25px;}
 input[value = "친구 추가"]:focus {outline: none;}

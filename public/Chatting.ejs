@@ -20,6 +20,12 @@
     <nav>
       <div class="select_sub">
         <span style = "font-weight: bold; color:#ffffff;"><%=fuser.fname%>님과의 1:1채팅방</span>
+        <select id="chat_tema" onChange="change(this.options[this.selectedIndex].value)">
+          <option value="blue">기본 테마</option>
+          <option value="red">붉은 테마</option>
+          <option value="green">연두 테마</option>
+          <option value="purple">연보라 테마</option>
+        </select>
         <!-- 대화 상대가 친구가 아닐 경우 뜨는 "친구 추가" 버튼 -->
         <%
             if(!isFriend){
@@ -67,6 +73,53 @@
         fname : "<%=fuser.fname%>",
     };
 
+    //테마 색 변경 (미완성)
+    function change(tema) {
+      var mmessage = $('.mmessage');
+      var send = $('#send');
+      if( tema == "blue" )
+        {
+            mmessage.removeClass('red');
+            send.removeClass('red');
+            mmessage.removeClass('green');
+            send.removeClass('green');
+            mmessage.removeClass('purple');
+            send.removeClass('purple');
+        }
+        if( tema == "red" )
+          {
+              mmessage.removeClass('green');
+              send.removeClass('green');
+              mmessage.removeClass('purple');
+              send.removeClass('purple');
+              mmessage.removeClass('blue');
+              send.removeClass('blue');
+              mmessage.addClass('red');
+              send.addClass('red');
+          }
+        if( tema == "green" )
+          {
+              mmessage.removeClass('red');
+              send.removeClass('red');
+              mmessage.removeClass('blue');
+              send.removeClass('blue');
+              mmessage.removeClass('purple');
+              send.removeClass('purple');
+              mmessage.addClass('green');
+              send.addClass('green');
+          }
+        if( tema == "purple" )
+          {
+              mmessage.removeClass('red');
+              send.removeClass('red');
+              mmessage.removeClass('green');
+              send.removeClass('green');
+              mmessage.removeClass('blue');
+              send.removeClass('blue');
+              mmessage.addClass('purple');
+              send.addClass('purple');
+          }
+    }
     //친구 추가
     $(".add").on("click", function() {
         let id = $(this).attr('data-id');
