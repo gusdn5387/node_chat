@@ -56,7 +56,7 @@ const Chat = require('./db/ChatModel');
 const ChatLog = require('./db/ChatLogModel');
 
 io.on('connection',(socket) => {
-    socket.on('send message', (users,msg) => { //메시지가 오면은 
+    socket.on('send message', (users,msg) => { //메시지가 오면은
         let data = {
             users : users,
             msg : msg
@@ -75,6 +75,7 @@ io.on('connection',(socket) => {
                 newChat.fid = data.users.fuser;
                 newChat.fname = data.users.fname;
                 newChat.msg = data.msg;
+                newChat.date = new Date();
                 newChat.save(err => {
                     if(err) throw err;
                 });
@@ -90,7 +91,8 @@ io.on('connection',(socket) => {
                     'name' : data.users.name,
                     'fid' : data.users.fuser,
                     'fname' : data.users.fname,
-                    'msg' : data.msg
+                    'msg' : data.msg,
+                    'date' : new Date()
                 }},(err,res) => {
                     if(err) throw err;
                 });

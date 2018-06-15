@@ -40,7 +40,7 @@
         <tr class = "move" data-id = "<%=id%>" data-name = "<%=name%>">
           <td><img src="img/profile.png" alt="프로필"></td>
           <td><%=name%></td>
-          <td><div><%=data.msg%></div></td>
+          <td><div class="list-msg"><%=data.msg%></div></td>
         </tr>
         <%
         });
@@ -60,6 +60,19 @@
     });
     socket.on('alert message',(data) => {
         if(user == data.users.fuser){
+
+            if($(`tr[data-id=${data.users.user}]`).length > 0){
+                $(`tr[data-id=${data.users.user}]`).find(".list-msg").css({"color" : 'red'}).text(data.msg);
+                $(`tr[data-id=${data.users.user}]`).prependTo("#Clt");
+            }else{
+                code = `<tr class = "move" data-id = "${data.users.user}" data-name = "${data.users.name}">
+                            <td><img src="img/profile.png" alt="프로필"></td>
+                            <td>${data.users.name}</td>
+                            <td><div class="list-msg">${data.msg}</div></td>
+                        </tr>`;
+                $("#Clt").prepend(code);
+                $("#Clt tr").eq(0).find(".list-msg").css({"color" : 'red'});
+            }
 
         }
     });

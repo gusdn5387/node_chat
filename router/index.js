@@ -91,7 +91,7 @@ router.get('/addfriend', (req,res) => {
 router.get('/chatlist', (req,res) => {
     loginCh(req,res);
     if(req.user){
-        Chat.find({$or: [{'id' : req.user.id},{'fid' : req.user.id}]}, (err,chatList) => {
+        Chat.find({$or: [{'id' : req.user.id},{'fid' : req.user.id}]}).sort({'date' : -1}).exec((err,chatList) => {
             if(err) throw err;
 
             res.render('ChatList', {
@@ -117,7 +117,6 @@ router.get('/chatting', (req,res) => {
                 let isFriend = false;
 
                 if(result.length > 0) isFriend = true;
-                
                 res.render('Chatting', {
                     title : '1:1 채팅',
                     user : req.user,

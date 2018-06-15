@@ -102,7 +102,7 @@
     });
     //메시지를 받으면
     socket.on('receive message',(data) => {
-        if(users.user == data.users.fuser){
+        if(users.user == data.users.fuser && "<%=fuser.fid%>" == data.users.user){
             $(".chat ul").append(`
                 <li class="fl">
                   <div class = "name">${data.users.name}</div>

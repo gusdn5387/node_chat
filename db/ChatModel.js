@@ -5,7 +5,8 @@ let chatSchema = mongoose.Schema({ //friends collection Schema
     name : String,
     fid : String,
     fname : String,
-    msg : String
+    msg : String,
+    date : Date
 });
 
 module.exports = mongoose.model('chat', chatSchema, 'chat');
