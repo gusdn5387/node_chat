@@ -141,7 +141,7 @@
     //메시지를 보내면
     $("#chat").on('submit', e => {
         e.preventDefault();
-        let msg = $("#contents").val()
+        let msg = $("#contents").val().trim();
         if(msg.length > 0){
             $(".chat ul").append(`
                 <li class="fr">
